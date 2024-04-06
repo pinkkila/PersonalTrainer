@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { fetchCustomers } from "../apicalls";
+import { fetchCustomers, fetchAddCustomer } from "../apicalls";
 
 import { AgGridReact } from 'ag-grid-react'; // AG Grid Component
 import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the grid
 import "ag-grid-community/styles/ag-theme-material.css"; // Optional Theme applied to the grid
+import AddCustomer from "./AddCustomer";
 
 const Customerlist = () => {
     const [customers, setCustomers] = useState([]);
@@ -27,8 +28,15 @@ const Customerlist = () => {
             .catch(err => console.error(err));
     };
 
+    const addCustomer = (newCustomer) => {
+        fetchAddCustomer(newCustomer)
+            .then(() => handleFetch())
+            .catch(err => console.error(err));
+    };
+
     return (
         <>
+            <AddCustomer addCustomer={addCustomer} />
             <div className="ag-theme-material" style={{ height: 600 }}>
                 <AgGridReact
                     rowData={customers}
