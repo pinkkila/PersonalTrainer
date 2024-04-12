@@ -10,7 +10,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-
+import 'dayjs/locale/fi';
 
 const AddTraining = ({ data, addTraining }) => {
     const [open, setOpen] = useState(false);
@@ -53,12 +53,13 @@ const AddTraining = ({ data, addTraining }) => {
                         fullWidth
                         variant="standard"
                     />
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="fi">
                         <DateTimePicker
                             onChange={e =>  {
                                 const date = new Date(e);
                                 setTraining({ ...training, date: date.toISOString() })}}
                             ampm={false}
+                            
                         />
                     </LocalizationProvider>
 
