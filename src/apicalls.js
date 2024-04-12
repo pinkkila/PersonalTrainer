@@ -24,4 +24,8 @@ export const fetchAddCustomer = async (newCustomer) => {
     return await response.json();
 }
 
+export const fetchDeleteCustomer = (url) => {
+    
+}
+
 
