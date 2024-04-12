@@ -7,6 +7,7 @@ import "ag-grid-community/styles/ag-theme-material.css"; // Optional Theme appli
 import Button from '@mui/material/Button';
 
 import AddCustomer from "./AddCustomer";
+import EditCustomer from "./EditCustomer";
 
 const Customerlist = () => {
     const [customers, setCustomers] = useState([]);
@@ -18,6 +19,10 @@ const Customerlist = () => {
         { field: 'city', filter: true },
         { field: 'email', filter: true },
         { field: 'phone', filter: true },
+        {
+            cellRenderer: params => <EditCustomer data={params.data} updateCustomer={updateCustomer} />,
+            width: 120
+        },
         {
             cellRenderer: params =>
                 <Button size="small" color="error" onClick={() => deleteCustomer(params.data._links.customer.href)}>
@@ -49,6 +54,22 @@ const Customerlist = () => {
                 .then(() => handleFetch())
                 .catch(err => console.error(err));
         }
+    };
+
+    const updateCustomer = (url, updatedCustomer) => {
+        fetch(url, {
+            method: 'PUT',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(updatedCustomer)
+        })
+            .then(response => {
+                if (!response.ok)
+                    throw new Error("Error when updating: " + response.statusText);
+
+                return response.json();
+            })
+            .then(() => handleFetch())
+            .catch(err => console.error(err));
     };
 
     return (
