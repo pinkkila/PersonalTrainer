@@ -12,7 +12,6 @@ const Traininglist = () => {
         { headerName: 'date', valueGetter: p => dayjs(p.data.date).format('DD.MM.YYYY HH:mm'), filter: true },
         { field: 'duration', filter: true },
         { field: 'activity', filter: true },
-        { field: 'customer.firstname', headerName: 'Customer', filter: true },
         { headerName: 'Customer', valueGetter: p => p.data.customer.firstname + ' ' + p.data.customer.lastname, filter: true },
     ]);
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchCustomers, fetchAddCustomer, fetchDeleteCustomer, fetchUpdateCustomer } from "../apicalls";
+import { fetchCustomers, fetchAddCustomer, fetchDeleteCustomer, fetchUpdateCustomer, fetchAddTraining } from "../apicalls";
 
 import { AgGridReact } from 'ag-grid-react'; // AG Grid Component
 import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the grid
@@ -9,6 +9,7 @@ import Stack from '@mui/material/Stack';
 
 import AddCustomer from "./AddCustomer";
 import EditCustomer from "./EditCustomer";
+import AddTraining from "./AddTraining";
 
 const Customerlist = () => {
     const [customers, setCustomers] = useState([]);
@@ -20,6 +21,10 @@ const Customerlist = () => {
         { field: 'city', filter: true },
         { field: 'email', filter: true },
         { field: 'phone', filter: true },
+        {
+            cellRenderer: params => <AddTraining data={params.data} addTraining={addTraining}/>,
+            width: 120
+        },
         {
             cellRenderer: params => <EditCustomer data={params.data} updateCustomer={updateCustomer} />,
             width: 120
@@ -58,10 +63,15 @@ const Customerlist = () => {
     };
 
     const updateCustomer = (url, updatedCustomer) => {
-        fetchUpdateCustomer()
+        fetchUpdateCustomer(url, updatedCustomer)
             .then(() => handleFetch())
             .catch(err => console.error(err));
     };
+
+    const addTraining = (newTraining) => {
+        fetchAddTraining(newTraining)
+            .catch(err => console.error(err));
+    }
 
     return (
         <>

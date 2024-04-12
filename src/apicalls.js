@@ -20,7 +20,6 @@ export const fetchAddCustomer = async (newCustomer) => {
     });
     if (!response.ok)
         throw new Error("Error when adding new customer: " + response.statusText);
-
     return await response.json();
 };
 
@@ -29,15 +28,28 @@ export const fetchDeleteCustomer = async (url) => {
     if (!response.ok)
         throw new Error("Error in deletion: " + response.statusText);
     return await response.json();
-}
+};
 
 export const fetchUpdateCustomer = async (url, updatedCustomer) => {
-    const response = await fetch(url, { 
+    const response = await fetch(url, {
         method: 'PUT',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(updatedCustomer)
-    })
+    });
     if (!response.ok)
         throw new Error("Error when updating customer " + response.statusText);
     return await response.json();
-}
+};
+
+export const fetchAddTraining = async (newTraining) => {
+    const response = await fetch(import.meta.env.VITE_API_ADDTRAINING, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(newTraining)
+    });
+    if (!response.ok)
+        throw new Error("Error when adding new training: " + response.statusText);
+    return await response.json();
+};
+
+
