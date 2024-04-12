@@ -5,6 +5,7 @@ import { AgGridReact } from 'ag-grid-react'; // AG Grid Component
 import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the grid
 import "ag-grid-community/styles/ag-theme-material.css"; // Optional Theme applied to the grid
 import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 
 import AddCustomer from "./AddCustomer";
 import EditCustomer from "./EditCustomer";
@@ -74,7 +75,9 @@ const Customerlist = () => {
 
     return (
         <>
-            <AddCustomer addCustomer={addCustomer} />
+            <Stack direction="row" spacing={2} mt={2} justifyContent="left" alignItems="center">
+                <AddCustomer addCustomer={addCustomer} />
+            </Stack>
             <div className="ag-theme-material" style={{ height: 600 }}>
                 <AgGridReact
                     rowData={customers}
