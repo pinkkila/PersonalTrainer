@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchCustomers, fetchAddCustomer } from "../apicalls";
+import { fetchCustomers, fetchAddCustomer, fetchDeleteCustomer } from "../apicalls";
 
 import { AgGridReact } from 'ag-grid-react'; // AG Grid Component
 import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the grid
@@ -45,14 +45,7 @@ const Customerlist = () => {
 
     const deleteCustomer = (url) => {
         if (window.confirm("Are you sure?")) {
-            console.log(url); // tämä on nyt vaan omaks iloks.
-            fetch(url, { method: 'DELETE' }) // tämä kanssa tonne carapi.js
-                .then(response => {
-                    if (!response.ok)
-                        throw new Error("Error in deletion: " + response.statusText);
-
-                    return response.json();
-                })
+            fetchDeleteCustomer(url)
                 .then(() => handleFetch())
                 .catch(err => console.error(err));
         }
