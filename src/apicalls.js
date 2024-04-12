@@ -31,4 +31,13 @@ export const fetchDeleteCustomer = async (url) => {
     return await response.json();
 }
 
-
+export const fetchUpdateCustomer = async (url, updatedCustomer) => {
+    const response = await fetch(url, { 
+        method: 'PUT',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(updatedCustomer)
+    })
+    if (!response.ok)
+        throw new Error("Error when updating customer " + response.statusText);
+    return await response.json();
+}

@@ -45,7 +45,7 @@ const EditCustomer = ({ data, updateCustomer }) => {
     return (
         <>
             <Button variant="outlined" onClick={handleClickOpen}>
-                Add customer
+                Edit
             </Button>
             <Dialog
                 open={open}

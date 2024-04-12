@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchCustomers, fetchAddCustomer, fetchDeleteCustomer } from "../apicalls";
+import { fetchCustomers, fetchAddCustomer, fetchDeleteCustomer, fetchUpdateCustomer } from "../apicalls";
 
 import { AgGridReact } from 'ag-grid-react'; // AG Grid Component
 import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the grid
@@ -58,17 +58,7 @@ const Customerlist = () => {
     };
 
     const updateCustomer = (url, updatedCustomer) => {
-        fetch(url, {
-            method: 'PUT',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify(updatedCustomer)
-        })
-            .then(response => {
-                if (!response.ok)
-                    throw new Error("Error when updating: " + response.statusText);
-
-                return response.json();
-            })
+        fetchUpdateCustomer()
             .then(() => handleFetch())
             .catch(err => console.error(err));
     };
