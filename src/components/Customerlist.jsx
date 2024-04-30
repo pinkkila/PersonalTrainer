@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { fetchCustomers, fetchAddCustomer, fetchDeleteCustomer, fetchUpdateCustomer, fetchAddTraining } from "../apicalls";
 
 import { AgGridReact } from 'ag-grid-react'; // AG Grid Component
@@ -12,6 +12,7 @@ import EditCustomer from "./EditCustomer";
 import AddTraining from "./AddTraining";
 
 const Customerlist = () => {
+    const gridRef = useRef();
     const [customers, setCustomers] = useState([]);
     const [colDef] = useState([
         { field: 'firstname', filter: true },
@@ -37,7 +38,7 @@ const Customerlist = () => {
             , width: 120
         }
     ]);
-
+    
     useEffect(() => {
         handleFetch();
     }, []);
@@ -73,10 +74,15 @@ const Customerlist = () => {
             .catch(err => console.error(err));
     }
 
+    const onBtnExport = () => {
+        gridRef.current.api.exportDataAsCsv();
+    }
+
     return (
         <>
             <Stack direction="row" spacing={2} mt={2} justifyContent="left" alignItems="center">
                 <AddCustomer addCustomer={addCustomer} />
+                <Button variant="outlined" onClick={onBtnExport}>Download CSV export file</Button>
             </Stack>
             <div className="ag-theme-material" style={{ height: 600 }}>
                 <AgGridReact
@@ -85,6 +91,8 @@ const Customerlist = () => {
                     pagination={true}
                     paginationAutoPageSize={true}
                     suppressCellFocus={true}
+                    ref={gridRef}
+                    // suppressExcelExport={true}
                 />
             </div>
         </>

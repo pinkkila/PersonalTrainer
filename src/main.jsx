@@ -7,6 +7,8 @@ import App from './App.jsx';
 import Customerlist from './components/Customerlist.jsx';
 import Traininglist from './components/Trainingslist.jsx';
 import ErrorComponent from './components/ErrorComponent.jsx';
+import Calendar from './components/TrainingCalendar.jsx';
+import Charts from './components/Charts.jsx';
 
 const router = createBrowserRouter([
     {
@@ -21,6 +23,14 @@ const router = createBrowserRouter([
             {
                 path: "trainings",
                 element: <Traininglist />
+            },
+            {
+                path: "calendar",
+                element: <Calendar />
+            },
+            {
+                path: "charts",
+                element: <Charts />
             }
         ]
     },
@@ -28,7 +38,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <React.StrictMode>
+    // <React.StrictMode>
         <RouterProvider router={router} />
-    </React.StrictMode>,
+    // </React.StrictMode>
 );
