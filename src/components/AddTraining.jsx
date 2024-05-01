@@ -36,7 +36,7 @@ const AddTraining = ({ data, addTraining }) => {
 
     return (
         <>
-            <Button variant="outlined" onClick={handleClickOpen}>
+            <Button variant="outlined" size="small" onClick={handleClickOpen}>
                 Add Training
             </Button>
             <Dialog

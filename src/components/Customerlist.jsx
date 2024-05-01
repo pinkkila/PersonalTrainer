@@ -24,20 +24,24 @@ const Customerlist = () => {
         { field: 'phone', filter: true },
         {
             cellRenderer: params => <AddTraining data={params.data} addTraining={addTraining}/>,
-            width: 120
+            width: 100
         },
         {
             cellRenderer: params => <EditCustomer data={params.data} updateCustomer={updateCustomer} />,
-            width: 120
+            width: 100
         },
         {
             cellRenderer: params =>
                 <Button size="small" color="error" onClick={() => deleteCustomer(params.data._links.customer.href)}>
                     Delete
-                </Button>
-            , width: 120
+                </Button>,
+            width: 100
         }
     ]);
+
+    const autoSizeStrategy = {
+        type: 'fitCellContents'
+    };
     
     useEffect(() => {
         handleFetch();
@@ -75,7 +79,9 @@ const Customerlist = () => {
     }
 
     const onBtnExport = () => {
-        gridRef.current.api.exportDataAsCsv();
+        if (window.confirm("Are you sure you want to download?")) {
+            gridRef.current.api.exportDataAsCsv();
+        }
     }
 
     return (
@@ -92,7 +98,7 @@ const Customerlist = () => {
                     paginationAutoPageSize={true}
                     suppressCellFocus={true}
                     ref={gridRef}
-                    // suppressExcelExport={true}
+                    autoSizeStrategy={autoSizeStrategy}
                 />
             </div>
         </>

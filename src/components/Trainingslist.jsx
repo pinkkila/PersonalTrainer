@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 const Traininglist = () => {
     const [trainings, setTrainings] = useState([]);
     const [colDef] = useState([
-        { headerName: 'date', valueGetter: p => dayjs(p.data.date).format('DD.MM.YYYY HH:mm'), filter: true },
+        { headerName: 'Date and Time', valueGetter: p => dayjs(p.data.date).format('DD.MM.YYYY HH:mm'), filter: true },
         { field: 'duration', filter: true },
         { field: 'activity', filter: true },
         { headerName: 'Customer', valueGetter: p => p.data.customer.firstname + ' ' + p.data.customer.lastname, filter: true },
@@ -24,13 +24,17 @@ const Traininglist = () => {
         }
     ]);
 
+    const autoSizeStrategy = {
+        type: 'fitCellContents'
+    };
+
     useEffect(() => {
         handleFetch();
     }, []);
 
     const handleFetch = () => {
         fetchTrainings()
-            .then(data => setTrainings(data))
+            .then(data => setTrainings(data)) 
             .catch(err => console.error(err));
     };
 
@@ -51,6 +55,7 @@ const Traininglist = () => {
                     pagination={true}
                     paginationAutoPageSize={true}
                     suppressCellFocus={true}
+                    // autoSizeStrategy={autoSizeStrategy}
                 />
             </div>
         </>
