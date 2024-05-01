@@ -49,7 +49,7 @@ const Charts = () => {
                     </PieChart>
                 </ResponsiveContainer>
 
-                <ResponsiveContainer width="100%" height={400}>
+                <ResponsiveContainer width="100%" height={400} >
                     <BarChart
                         width={500}
                         height={300}
@@ -69,7 +69,7 @@ const Charts = () => {
                         <Bar dataKey="duration" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} />
                     </BarChart>
                 </ResponsiveContainer>
-                
+
             </Stack>
         </>
     );
@@ -77,15 +77,3 @@ const Charts = () => {
 
 
 export default Charts;
-
-// const handleFetch = () => {
-//     fetchTrainings()
-//         .then(data => data.map(training => {
-//             setTrainringData(prevData => [
-//                 ...prevData, {
-//                     activity: training.activity,
-//                     duration: training.duration
-//                 }]);
-//         }))
-//         .catch(err => console.error(err));
-// };
