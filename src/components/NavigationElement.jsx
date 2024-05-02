@@ -56,6 +56,9 @@ const NavigationElemt = () => {
                 <MenuItem onClick={handleClose}>
                     <Link to={"/charts"} style={{ color: "#424242", textDecoration: "none" }}>Charts</Link>
                 </MenuItem>
+                <MenuItem onClick={handleClose}>
+                    <Link to={"/pie"} style={{ color: "#424242", textDecoration: "none" }}>Piedesdi</Link>
+                </MenuItem>
             </Menu>
         </>
     );
