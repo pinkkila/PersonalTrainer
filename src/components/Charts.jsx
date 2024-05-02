@@ -1,12 +1,9 @@
 import { useState, useEffect } from "react";
 import { fetchTrainings } from "../apicalls";
 
-import { PieChart, Pie, BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LabelList } from 'recharts';
-import { Sector, Cell } from 'recharts';
-
-import { Stack, Box, duration } from "@mui/material";
-
-import { forOwn, groupBy, sumBy } from "lodash";
+import { PieChart, Pie, BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell} from 'recharts';
+import { Stack } from "@mui/material";
+import { groupBy, sumBy } from "lodash";
 
 const Charts = () => {
     const [trainingData, setTrainringData] = useState([]);
@@ -59,14 +56,12 @@ const Charts = () => {
                             labelLine={false}
                             label={renderCustomizedLabel}
                             outerRadius={140}
-                            // fill="#8884d8"
                             dataKey="duration"
                         >
                             {trainingData.map((entry, index) => (
                                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                             ))}
                         </Pie>
-
                         <Legend payload={
                             trainingData.map(
                                 (item, index) => ({
@@ -77,7 +72,6 @@ const Charts = () => {
                                 })
                             )
                         } />
-
                     </PieChart>
                 </ResponsiveContainer>
 

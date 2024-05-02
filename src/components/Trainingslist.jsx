@@ -24,10 +24,6 @@ const Traininglist = () => {
         }
     ]);
 
-    const autoSizeStrategy = {
-        type: 'fitCellContents'
-    };
-
     useEffect(() => {
         handleFetch();
     }, []);
@@ -55,7 +51,6 @@ const Traininglist = () => {
                     pagination={true}
                     paginationAutoPageSize={true}
                     suppressCellFocus={true}
-                    // autoSizeStrategy={autoSizeStrategy}
                 />
             </div>
         </>

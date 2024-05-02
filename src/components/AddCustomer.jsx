@@ -35,7 +35,7 @@ const AddCustomer = ({ addCustomer }) => {
 
     return (
         <>
-            <Button variant="outlined" size="small" onClick={handleClickOpen}>
+            <Button variant="outlined" onClick={handleClickOpen}>
                 Add customer
             </Button>
             <Dialog
