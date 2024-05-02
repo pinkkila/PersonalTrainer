@@ -81,26 +81,6 @@ const Charts = () => {
                     </PieChart>
                 </ResponsiveContainer>
 
-                {/* `${item.name} (${item.value}%)` */}
-                {/* <LabelList dataKey="activity" position="top" /> */}
-
-
-                {/* <ResponsiveContainer width="100%" height={700}>
-                    <PieChart >
-                        <Pie
-                            dataKey="duration"
-                            startAngle={180}
-                            endAngle={-180}
-                            data={trainingData}
-                            cx={200}
-                            cy={200}
-                            outerRadius={150}
-                            fill="#8884d8"
-                            label
-                        />
-                    </PieChart>
-                </ResponsiveContainer> */}
-
                 <ResponsiveContainer width="100%" height={400} >
                     <BarChart
                         width={500}
