@@ -31,6 +31,15 @@ const AddCustomer = ({ addCustomer }) => {
     const handleSave = () => {
         addCustomer(customer);
         handleClose();
+        setCustomer({
+            firstname: '',
+            lastname: '',
+            streetaddress: '',
+            postcode: '',
+            city: '',
+            email: '',
+            phone: ''
+        });
     };
 
     return (
@@ -42,7 +51,7 @@ const AddCustomer = ({ addCustomer }) => {
                 open={open}
                 onClose={handleClose}
             >
-                <DialogTitle>Subscribe</DialogTitle>
+                <DialogTitle>Add Customer</DialogTitle>
                 <DialogContent>
                     <TextField
                         margin="dense"
