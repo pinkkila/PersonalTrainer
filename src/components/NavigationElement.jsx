@@ -5,7 +5,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Button } from '@mui/material';
+import Button from '@mui/material/Button';
 
 import { Link } from 'react-router-dom';
 

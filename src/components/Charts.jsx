@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { fetchTrainings } from "../apicalls";
 
 import { PieChart, Pie, BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell} from 'recharts';
-import { Stack } from "@mui/material";
 import { groupBy, sumBy } from "lodash";
+import Stack from "@mui/material/Stack";
 
 const Charts = () => {
     const [trainingData, setTrainringData] = useState([]);

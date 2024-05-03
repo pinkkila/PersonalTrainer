@@ -5,7 +5,6 @@ import { AgGridReact } from 'ag-grid-react'; // AG Grid Component
 import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the grid
 import "ag-grid-community/styles/ag-theme-material.css"; // Optional Theme applied to the grid
 import dayjs from "dayjs";
-
 import Button from '@mui/material/Button';
 
 const Traininglist = () => {
