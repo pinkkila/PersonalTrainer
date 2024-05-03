@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react'; 
 import { fetchTrainings } from "../apicalls";
 
-import { Calendar, momentLocalizer } from 'react-big-calendar';
+import { Calendar, luxonLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { DateTime, Settings } from 'luxon'
 
 const TrainingCalendar = () => {
     const [events, setEvents] = useState([])
-    
-    const localizer = momentLocalizer(moment);
+
+    Settings.defaultZone = 'Europe/Helsinki'
+    const localizer = luxonLocalizer(DateTime, { firstDayOfWeek: 1 })
 
     useEffect(() => {
         handleFetch();
@@ -35,7 +37,6 @@ const TrainingCalendar = () => {
                 startAccessor="start"
                 endAccessor="end"
                 views={["month", "week", "day"]}
-                
             />
         </div>
     );
