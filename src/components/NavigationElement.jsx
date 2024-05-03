@@ -5,6 +5,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Button } from '@mui/material';
 
 import { Link } from 'react-router-dom';
 
@@ -44,17 +45,17 @@ const NavigationElemt = () => {
                 onClose={handleClose}
                 TransitionComponent={Fade}
             >
-                <MenuItem onClick={handleClose}>
-                    <Link to={"/"} style={{ color: "#424242", textDecoration: "none" }}>Customers</Link>
+                <MenuItem onClick={handleClose} disableGutters>
+                    <Button component={Link} to={"/"} fullWidth>Customers</Button>
                 </MenuItem>
-                <MenuItem onClick={handleClose}>
-                    <Link to={"/trainings"} style={{ color: "#424242", textDecoration: "none" }}>Trainings</Link>
+                <MenuItem onClick={handleClose} disableGutters>
+                    <Button component={Link} to={"/trainings"} fullWidth>Trainings</Button>
                 </MenuItem>
-                <MenuItem onClick={handleClose}>
-                    <Link to={"/calendar"} style={{ color: "#424242", textDecoration: "none" }}>Calendar</Link>
+                <MenuItem onClick={handleClose} disableGutters>
+                    <Button component={Link} to={"/calendar"} fullWidth>Calendar</Button>
                 </MenuItem>
-                <MenuItem onClick={handleClose}>
-                    <Link to={"/charts"} style={{ color: "#424242", textDecoration: "none" }}>Charts</Link>
+                <MenuItem onClick={handleClose} disableGutters>
+                    <Button component={Link} to={"/charts"} fullWidth>Charts</Button>
                 </MenuItem>
             </Menu>
         </>
